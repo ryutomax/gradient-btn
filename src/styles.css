@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+/*========= レイアウトのためのCSS ===============*/
+
+body {
+  vertical-align: middle;
+  padding: 100px 0;
+  text-align: center;
+}
+
+p {
+  margin: 0 0 10px 0;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+}
+
+a:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+/* aタグのリセットCSS */
+.gradient-btn {
+  display: block;
+  text-decoration: none; /* アンダーラインを消す */
+}
+
+/* buttonタグのリセットCSS */
+button.gradient-btn {
+  border: none;
+  appearance: none;
+  padding: 0;
+}
+
+/* ボタン本体の装飾 */
+.gradient-btn {
+  position: relative; /* static以外を指定 */
+  z-index: 0; /* グラデーションよりも上に配置 */
+  display: inline-block; /* inline以外にする */
+  width: 400px; /* 横幅 */
+  height: 60px; /* 縦幅 */
+  line-height: 60px; /* 行の高さ(heightと同じにする) */
+  background: transparent; /* 背景を透明にする */
+  background: black;
+  border-radius: 5px; /* 角の丸み */
+  overflow: hidden; /* はみ出した部分を非表示(角丸を付ける場合は必須) */
+  cursor: pointer; /* カーソルをポインターにする */
+  /* 以下ボタンのテキスト装飾(自由にカスタマイズしてください) */
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ::before, ::afterで2種類のグラデーションを用意 */
+.gradient1::before,
+.gradient1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* グラデーション1 */
+.gradient1::before {
+  transition: all 0.6s; /* アニメーション実行時間 */
+  z-index: -1;
+  background: black;
+}
+
+/* グラデーション2 */
+.gradient1::after {
+  z-index: -2;
+  background: linear-gradient(135deg, #12c2e9 0%, #c471ed 100%);
+}
+
+/* ホバー時にグラデーション1を透明にする */
+.gradient1:hover::before {
+  opacity: 0;
+}
+
+/*== グラデーション線から塗に変化する */
+
+.gradient2 {
+  color: rgb(255, 255, 255);
+  transition: all 0.4s ease-out;
+  background-position: 99% 50%;
+}
+
+/*hoverした際、グラデーションと影を付ける*/
+.gradient2:hover {
+  color: #fff;
+  /*背景の色と形状*/
+  background: linear-gradient(270deg, #3bade3 0%, #85e2ff 50%, #576fe6 100%);
+  background-size: 200% auto;
+  /* background-position: right center; */
+  background-position: left;
+  background-position: 1% 50%;
+}
+
+.gradient3 {
+  background: linear-gradient(
+    270deg,
+    black 0%,
+    black 25%,
+    #3bade3 51%,
+    #576fe6 100%
+  );
+  background-position: 99% 50%;
+  background-size: 350% auto;
+  /*アニメーションの指定*/
+  transition: all 0.7s ease-out;
+}
+
+/*hoverした際の、背景の場所とテキスト色の変更*/
+.gradient3:hover {
+  color: #fff;
+  background-position: 1% 50%;
+}
